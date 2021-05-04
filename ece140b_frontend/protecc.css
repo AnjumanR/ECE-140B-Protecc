@@ -1,0 +1,21 @@
+/*CSS for the body*/
+body {
+    background-color: white;
+  }
+  
+  /*Product Name*/
+  h1 {
+    text-align:center;
+  }
+  
+  /*Start button*/
+  .start_button{
+    text-align: center;
+    cursor:pointer;
+  }
+  
+  /*Stop button*/
+  .stop_button{
+    text-align: center;
+    cursor:pointer;
+  }
