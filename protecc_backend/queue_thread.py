@@ -16,7 +16,6 @@ def motion_detection(out_q):
         global baseline_image
         global video
         # Produce some data
-        # video=cv2.VideoCapture(0)
         check, frame = video.read()
         status=0
         gray_frame=cv2.cvtColor(frame,cv2.COLOR_BGR2GRAY)
@@ -74,7 +73,7 @@ def facial_recognition(in_q, known_faces_enc):
         print("in_q: " + str(in_q.qsize()))
         frames = in_q.get()
         # Process the data
-        print("Facial Recognition")
+#         print("Facial Recognition")
         np_color_frame = np.asarray(frames['color_frame'])
         # print(np_color_frame.shape)
         image = PIL.Image.fromarray(np_color_frame, "RGB")
