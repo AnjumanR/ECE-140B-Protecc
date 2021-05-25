@@ -13,7 +13,7 @@
 <body>
   <h1> P R O T E C C </h1>
 
-  <!--Setting Menu--> 
+  <!--Setting Menu
   <div class="dropdown">
     <button class="dropbtn">Detection Settings</button>
     <div class="dropdown-content">
@@ -23,6 +23,45 @@
     </div>
   </div>
   <br>
+-->
+
+<!--Setting Menu--> 
+<h3>Detection Settings</h2>
+  <div class="sensitivity">
+    <form action="/action_page.php" method="get">
+      <label for="sensitivity">Sensitivity (between 0 and 50):</label>
+      <input type="range" id="sensitivity" name="sensitivity" min="0" max="50" step = "10">
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+  <br>
+
+  <div class="record_video">
+    <form>
+      <p>Record Video:</p>
+      <input type="radio" id="on" name="video" value="on">
+      <label for="on">On</label><br>
+      <input type="radio" id="off" name="video" value="off">
+      <label for="off">Off</label><br>
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+  <br>
+
+  <div class="cam_resolution">
+    <form>
+      <p>Camera Resolution:</p>
+      <input type="checkbox" id="480p" name="resolution" value="480p" onclick="mark_option(this)">
+      <label for="480p"> 480p</label><br>
+      <input type="checkbox" id="720p" name="resolution" value="720p" onclick="mark_option(this)">
+      <label for="720p"> 720p</label><br>
+      <input type="checkbox" id="1080p" name="resolution" value="1080p" onclick="mark_option(this)">
+      <label for="1080p"> 1080p</label><br>
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+  <br>
+
 
   <!--start button-->
   <div class="start_button">
