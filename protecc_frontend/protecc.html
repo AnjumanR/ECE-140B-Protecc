@@ -29,8 +29,8 @@
 <h3>Detection Settings</h2>
   <div class="sensitivity">
     <form action="/action_page.php" method="get">
-      <label for="sensitivity">Sensitivity (between 0 and 50):</label>
-      <input type="range" id="sensitivity" name="sensitivity" min="0" max="50" step = "10">
+      <label for="sensitivity">Sensitivity (between 0 and 100):</label>
+      <input type="range" id="sensitivity" name="sensitivity" min="0" max="100" step = "10">
       <input type="submit" value="Submit">
     </form>
   </div>
@@ -51,11 +51,11 @@
   <div class="cam_resolution">
     <form>
       <p>Camera Resolution:</p>
-      <input type="checkbox" id="480p" name="resolution" value="480p" onclick="mark_option(this)">
+      <input type="checkbox" id="480p" name="resolution" value="480" onclick="mark_option(this)">
       <label for="480p"> 480p</label><br>
-      <input type="checkbox" id="720p" name="resolution" value="720p" onclick="mark_option(this)">
+      <input type="checkbox" id="720p" name="resolution" value="720" onclick="mark_option(this)">
       <label for="720p"> 720p</label><br>
-      <input type="checkbox" id="1080p" name="resolution" value="1080p" onclick="mark_option(this)">
+      <input type="checkbox" id="1080p" name="resolution" value="1080" onclick="mark_option(this)">
       <label for="1080p"> 1080p</label><br>
       <input type="submit" value="Submit">
     </form>
