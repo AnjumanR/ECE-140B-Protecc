@@ -64,7 +64,8 @@ def motion_detection(out_q):
                 motion = True
         if(motion):
             out_q.put(frame_dict)
-            print("out_q: " + str(out_q.qsize()))
+            print("Motion!")
+            # print("out_q: " + str(out_q.qsize()))
 
 # A thread that consumes data
 def facial_recognition(in_q, known_faces_enc):
