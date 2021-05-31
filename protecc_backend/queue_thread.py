@@ -68,21 +68,32 @@ def motion_detection(out_q):
             # print("out_q: " + str(out_q.qsize()))
 
 # A thread that consumes data
-def facial_recognition(in_q, known_faces_enc):
+def facial_recognition(in_q, known_faces, known_faces_enc):
     while True:
         # Get some data
         # print("in_q: " + str(in_q.qsize()))
         frames = in_q.get()
         # Process the data
 #         print("Facial Recognition")
-        np_color_frame = np.asarray(frames['color_frame'])
+        # color_frame = np.asarray(frames['color_frame'])
+        color_frame = frames['color_frame']
+        small_frame = cv2.resize(frames['color_frame'], (0, 0), fx=0.25, fy=0.25)
+        cv2.imwrite("./motion_captures/motion.jpg", color_frame)
         # print(np_color_frame.shape)
-        image = PIL.Image.fromarray(np_color_frame, "RGB")
-        image.save("./motion_captures/motion.jpg")
-        compare_enc = face_recognition.face_encodings(np_color_frame)
+        # image = PIL.Image.fromarray(np_color_frame, "RGB")
+        # image.save("./motion_captures/motion.jpg")
+
+
+        compare_enc = face_recognition.face_encodings(small_frame)
         if(len(compare_enc) != 0):
             print("found matching face")
-            results = face_recognition.compare_faces(known_faces_enc, compare_enc[0])
+            for matches in compare_enc:
+                results = face_recognition.compare_faces(known_faces_enc, matches)
+            if True in matches:
+                first_match_index = matches.index(True)
+                # name = known_faces[first_match_index]
+        # else:
+        #     print("no matching face")
         # Indicate completion
         in_q.task_done()
 
@@ -92,18 +103,20 @@ if __name__ == "__main__":
 
     image_types = ('*.img', '*.jpg', '*.jpeg', '*.png')
     image_paths = []
+    known_face_names = []
     for files in image_types:
         image_paths.extend(glob.glob((join("known_faces/", files))))
 
     for p in image_paths:
         print(p)
+        known_face_names.append(p)
         face_img = face_recognition.load_image_file(p)
         # print(face_img.shape)
         # image = PIL.Image.fromarray(face_img, "RGB")
         # image = image.save("test/known.jpg")
         known_faces_enc.append(face_recognition.face_encodings(face_img)[0])    # [0] first face
     q = Queue()
-    facial_recog = Thread(target = facial_recognition, args =(q, known_faces_enc, ))
+    facial_recog = Thread(target = facial_recognition, args =(q, known_face_names, known_faces_enc, ))
     motion = Thread(target = motion_detection, args =(q, ))
     motion.start()
     facial_recog.start()
