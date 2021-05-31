@@ -96,6 +96,7 @@ if __name__ == "__main__":
         image_paths.extend(glob.glob((join("known_faces/", files))))
 
     for p in image_paths:
+        print(p)
         face_img = face_recognition.load_image_file(p)
         # print(face_img.shape)
         # image = PIL.Image.fromarray(face_img, "RGB")
