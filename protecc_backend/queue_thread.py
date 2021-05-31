@@ -74,11 +74,12 @@ def facial_recognition(in_q, known_faces, known_faces_enc):
         # print("in_q: " + str(in_q.qsize()))
         frames = in_q.get()
         # Process the data
-#         print("Facial Recognition")
+        # print("Facial Recognition")
         # color_frame = np.asarray(frames['color_frame'])
         color_frame = frames['color_frame']
         small_frame = cv2.resize(frames['color_frame'], (0, 0), fx=0.25, fy=0.25)
         cv2.imwrite("./motion_captures/motion.jpg", color_frame)
+
         # print(np_color_frame.shape)
         # image = PIL.Image.fromarray(np_color_frame, "RGB")
         # image.save("./motion_captures/motion.jpg")
