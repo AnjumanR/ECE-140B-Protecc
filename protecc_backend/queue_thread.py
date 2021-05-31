@@ -70,7 +70,7 @@ def motion_detection(out_q):
 def facial_recognition(in_q, known_faces_enc):
     while True:
         # Get some data
-        print("in_q: " + str(in_q.qsize()))
+        # print("in_q: " + str(in_q.qsize()))
         frames = in_q.get()
         # Process the data
 #         print("Facial Recognition")
