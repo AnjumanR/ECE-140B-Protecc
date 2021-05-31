@@ -106,6 +106,6 @@ if __name__ == "__main__":
     motion = Thread(target = motion_detection, args =(q, ))
     motion.start()
     facial_recog.start()
-    print("threads started")
+    print("Threads Started")
     # Wait for all produced items to be consumed
     q.join()
