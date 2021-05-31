@@ -78,7 +78,7 @@ def facial_recognition(in_q, known_faces_enc):
         np_color_frame = np.asarray(frames['color_frame'])
         # print(np_color_frame.shape)
         image = PIL.Image.fromarray(np_color_frame, "RGB")
-        image = image.save("motion_captures/motion.jpg")
+        image.save("./motion_captures/motion.jpg")
         compare_enc = face_recognition.face_encodings(np_color_frame)
         if(len(compare_enc) != 0):
             print("found matching face")
@@ -106,5 +106,6 @@ if __name__ == "__main__":
     motion = Thread(target = motion_detection, args =(q, ))
     motion.start()
     facial_recog.start()
+    print("threads started")
     # Wait for all produced items to be consumed
     q.join()
