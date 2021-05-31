@@ -28,11 +28,26 @@
 <!--Setting Menu--> 
 <h3>Detection Settings</h2>
   <div class="sensitivity">
-    <form action="/action_page.php" method="get">
+    <!--form action="/action_page.php" method="get"-->
+    <form>
       <label for="sensitivity">Sensitivity (between 0 and 100):</label>
       <input type="range" id="sensitivity" name="sensitivity" min="0" max="100" step = "10">
-      <input type="submit" value="Submit">
+      <input type="button" onClick="number()" value="Submit">
     </form>
+    <script>
+      function number(){
+        //store as Json object
+        var sens = {
+          sensitivity : document.getElementById("sensitivity").value
+        }
+        //Display on the website
+        var sens_num = document.getElementById("sensitivity").value
+        document.getElementById("display_sens").innerHTML = sens_num;
+        //var sens_Str = JSON.stringify(sens);
+        //document.getElementById("the_sens").innerHTML = sens_Str;
+      }
+    </script>
+    <p>Sensitivity Value: <span id="display_sens"></span> </p> 
   </div>
   <br>
 
@@ -43,25 +58,73 @@
       <label for="on">On</label><br>
       <input type="radio" id="off" name="video" value="off">
       <label for="off">Off</label><br>
-      <input type="submit" value="Submit">
+      <input type="button" onclick="record()" value="Submit">
     </form>
+    <script>
+      function record(){
+        //display on website
+        //var vi = document.getElementsByName('video');
+        //for(i = 0; i < vi.length; i++) {
+          //if(vi[i].checked)
+          //document.getElementById("record_video_tag").innerHTML = vi[i].value
+        //}
+        //store as Json Object
+        var vii = document.getElementsByName('video');
+        var rv = ''
+        for(j = 0; j < vii.length; j++) {
+          if(vii[j].checked)
+          rv = vii[j].value
+        }
+        var record_video = {
+          recording : rv
+        }
+        //var rv_str = JSON.stringify(record_video);
+        //document.getElementById("the_rv").innerHTML = rv_str;
+        document.getElementById("the_rv").innerHTML = rv;
+      }
+    </script>
+    <p>Record Video: <span id="the_rv"></span> </p> 
   </div>
   <br>
 
   <div class="cam_resolution">
     <form>
       <p>Camera Resolution:</p>
-      <input type="checkbox" id="480p" name="resolution" value="480" onclick="mark_option(this)">
+      <!--<input type="checkbox" id="480p" name="resolution" value="480" onclick="mark_option(this)">
       <label for="480p"> 480p</label><br>
       <input type="checkbox" id="720p" name="resolution" value="720" onclick="mark_option(this)">
       <label for="720p"> 720p</label><br>
       <input type="checkbox" id="1080p" name="resolution" value="1080" onclick="mark_option(this)">
       <label for="1080p"> 1080p</label><br>
-      <input type="submit" value="Submit">
+      <input type="button" onlick = "cam()" value="Submit">-->
+      <input type="radio" id="480p" name="resolution" value="480">
+      <label for="480p">480p</label><br>
+      <input type="radio" id="720p" name="resolution" value="720">
+      <label for="720p">720p</label><br>
+      <input type="radio" id="1080p" name="resolution" value="1080">
+      <label for="1080p">1080p</label><br>
+      <input type="button" onclick="cam()" value="Submit">
     </form>
+    <script>
+      function cam(){
+        var res = document.getElementsByName('resolution');
+        var cam_res = ''
+        for(k = 0; k < res.length; k++) {
+          if(res[k].checked)
+          cam_res = res[k].value
+        }
+        var cam_resolution = {
+          camera : cam_res
+        }
+        //var cam_str = JSON.stringify(cam_resolution);
+        //document.getElementById("display_cam").innerHTML = cam_str;
+        document.getElementById("the_cam").innerHTML = cam_res;
+      }
+      //example for concat : jsonArray1 = jsonArray1.concat(jsonArray2);
+    </script>
+    <p>Selected Resolution: <span id="the_cam"></span> </p> 
   </div>
   <br>
-
 
   <!--start button-->
   <div class="start_button">
@@ -96,6 +159,5 @@
 </html>
     
   
-
 
 
