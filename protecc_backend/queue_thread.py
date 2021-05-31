@@ -64,20 +64,21 @@ def motion_detection(out_q):
                 motion = True
         if(motion):
             out_q.put(frame_dict)
-            print("out_q: " + str(out_q.qsize()))
+            print("Motion!")
+            # print("out_q: " + str(out_q.qsize()))
 
 # A thread that consumes data
 def facial_recognition(in_q, known_faces_enc):
     while True:
         # Get some data
-        print("in_q: " + str(in_q.qsize()))
+        # print("in_q: " + str(in_q.qsize()))
         frames = in_q.get()
         # Process the data
 #         print("Facial Recognition")
         np_color_frame = np.asarray(frames['color_frame'])
         # print(np_color_frame.shape)
         image = PIL.Image.fromarray(np_color_frame, "RGB")
-        image = image.save("test/motion.jpg")
+        image.save("./motion_captures/motion.jpg")
         compare_enc = face_recognition.face_encodings(np_color_frame)
         if(len(compare_enc) != 0):
             print("found matching face")
@@ -105,5 +106,6 @@ if __name__ == "__main__":
     motion = Thread(target = motion_detection, args =(q, ))
     motion.start()
     facial_recog.start()
+    print("Threads Started")
     # Wait for all produced items to be consumed
     q.join()
