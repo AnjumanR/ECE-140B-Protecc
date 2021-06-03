@@ -5,7 +5,7 @@ import base64
 import io
 import os
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder= 'protecc_frontend')
 
 dirname = os.path.dirname(__file__)
 image_path = os.path.join(dirname, 'protecc_backend/known_faces')
