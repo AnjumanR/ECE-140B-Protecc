@@ -95,13 +95,36 @@ body {
   
   
   /*directory buttons*/
+  #dir{
+    width:100%;
+    text-align: center;
+  }
+  .all_dir{
+    width:300px;
+    display: inline-block;
+  }
   .unknown_dir {
+    background-color: #008CBA;
+    font-size: 20px;
+    border-radius: 12px;
     cursor:pointer;
   }
   .trust_dir {
+    background-color: #008CBA;
+    font-size: 20px;
+    border-radius: 12px;
     cursor:pointer;
   }
   .motion_dir {
+    background-color: #008CBA;
+    font-size: 20px;
+    border-radius: 12px;
+    cursor:pointer;
+  }
+  .record_dir{
+    background-color: #008CBA;
+    font-size: 20px;
+    border-radius: 12px;
     cursor:pointer;
   }
 

@@ -27,7 +27,7 @@
     }
   </style>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script type="text/javascript">
     var newImage = new Image();
     $(document).ready(function () {
@@ -39,7 +39,7 @@
             // console.log("new image: " + document.getElementById("picture").src);
         }, 5000);
     });
-  </script>
+  </script>-->
 </head>
   
   <!--body-->
@@ -55,22 +55,25 @@
   
   <div id="help" class="tabcontent">
     <h3>Help</h3>
-    <p style = "font-family: arial">
-      <b>Webcam</b> <br> Any USB camera will work with Protecc, but we recommend using a weatherproof one for outdoor installations. To add a camera, 
-      simply plug it into a USB port and mount it to the front of the case. <br>
-
-      <b>Detection Settings</b> <br> Sensitivity: This sets how sensitive the motion capture is. Lower the sensitivity to prevent small things from 
-      triggering the motion capture, and raise it if some things are not getting detected. <br> Record Video: When set to on, Protecc will constantly record and save footage.
-      <br>Camera Resolution: The quality of video that Protecc will capture. Higher resolutions will take up more space, but be more clear. Note: 
-      Max resolution depends on the camera being used. <br>
-
-      <b>Directories</b> <br> Unknown Directory: An image taken of the most recent time an unrecognized person was detected.
-      <br> Motion Directory: An image taken of the most recent time motion was detected. <br>
-
-      <b>Images</b> <br> Unknown People: Images captured of people not in the 'Trusted People' list will be available here.
-      <br>Trusted People: Images of every person who is trusted. 
-      <br>Motion Detection Images: Images of each time motion is detected <br>      
-    </p>
+    <table style="width:100%">
+      <tr>
+        <th style="width:33%">Webcam</th>
+        <th style="width:34%">Detection Settings</th> 
+        <th style="width:33%">Directories</th>
+      </tr>
+      <tr>
+        <td><p style = "font-family: arial">Any USB camera will work with Protecc, but we recommend using a weatherproof one for outdoor installations. To add a camera, 
+          simply plug it into a USB port and mount it to the front of the case.</p> </td>
+        <td><p style = "font-family: arial"><strong>Sensitivity: </strong>This sets how sensitive the motion capture is. Lower the sensitivity to prevent small things from 
+          triggering the motion capture, and raise it if some things are not getting detected. <br> <br> <strong>Record Video: </strong>When set to on, Protecc will constantly
+          record and save footage. <br> <br><strong>Camera Resolution:</strong> The quality of video that Protecc will capture. Higher resolutions will take up more space, but be more clear. Note: 
+          Max resolution depends on the camera being used.</p> </td> 
+        <td><p style = "font-family: arial"><strong>Unknown People Directory:</strong> Images captured of people not in the 'Trusted People' list will be available here, sorted by most recent.
+          <br><br><strong>Trusted People Directory:</strong> Contains images of every person who is trusted and a button to upload a photo of a new trusted person. 
+          <br><br><strong>Motion Image Directory:</strong> Images of each time motion is detected, sorted by most recent.
+          <br><br><strong>Recorded Footage Directory:</strong> Contains all previously recorded footage.</p></td>
+      </tr>
+    </table>
   </div>
   
   <div id="contact" class="tabcontent">
@@ -230,37 +233,23 @@
   </div>
   <br>
   
-  <div>
-    <b>Directories: </b>
-    <br>
-    <input class = "unknown_dir" type = button onClick = "location.href = 'unknowndir.html'" value='Unknown People Directory'>
-    <input class = "trust_dir" type = button onClick = "location.href = 'trustdir.html'" value='Trusted People Directory'>
-    <input class = "motion_dir" type = button onClick = "location.href = 'motiondir.html'" value='Motion Detection Directory'>
+  <h2>Directories</h2>
+  <div id ="dir">
+    <div class = "all_dir">
+      <input class = "unknown_dir" type = button onClick = "location.href = 'unknowndir.html'" value='Unknown People Directory'>
+    </div>
+    <div class = "all_dir">
+      <input class = "trust_dir" type = button onClick = "location.href = 'trustdir.html'" value='Trusted People Directory'>
+    </div>
+    <div class = "all_dir">
+      <input class = "motion_dir" type = button onClick = "location.href = 'motiondir.html'" value='Motion Detection Directory'>
+    </div>
+    <div class = "all_dir">
+      <input class = "record_dir" type = button onClick = "location.href = 'recorddir.html'" value='Recorded Footages Directory'>
+    </div>
   </div>
   <br>
 
-  <!--Categories-->
-  <div>
-    <table style="width:100%">
-      <tr>
-        <th style="width:33%">Unknown People</th>
-        <th style="width:34%">Trusted People</th> 
-        <th style="width:33%">Motion Detection Images</th>
-      </tr>
-      <tr>
-        <td><img id="picture" src="data:image/png;base64,{{ img_data }}"></td>
-        <td>IMAGES HERE</td> 
-        <td>IMAGES HERE</td>
-      </tr>
-    </table>
-  </div>
-  <br>
-  
-  <!--Footage-->
-  <div style = "text-align: center">
-    <b> Recorded Footage </b>
-  </div>
-  
 </body>
 </html>
     
