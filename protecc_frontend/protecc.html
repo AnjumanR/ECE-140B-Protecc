@@ -33,24 +33,44 @@
   <h1> P R O T E C C </h1>
   <!--TABS-->
   <div class="tab">
-    <button class="tablinks" onclick="userInfo(event, 'hardware')">Hardware Setup</button>
-    <button class="tablinks" onclick="userInfo(event, 'about')">About</button>
+    <button class="tablinks" onclick="userInfo(event, 'help')">Help</button>
     <button class="tablinks" onclick="userInfo(event, 'contact')">Contact</button>
+    <button class="tablinks" onclick="userInfo(event, 'about')">About</button>
+    <button class="tablinks" onclick="userInfo(event, 'mini')">Minimize Tabs</button>
   </div>
   
-  <div id="hardware" class="tabcontent">
-    <h3>Hardware Setup</h3>
-    <p>Hardware Setup Description</p>
-  </div>
-  
-  <div id="about" class="tabcontent">
-    <h3>About</h3>
-    <p>About Description</p> 
+  <div id="help" class="tabcontent">
+    <h3>Help</h3>
+    <p style = "font-family: arial">
+      <b>Webcam</b> <br> Any USB camera will work with Protecc, but we recommend using a weatherproof one for outdoor installations. To add a camera, 
+      simply plug it into a USB port and mount it to the front of the case. <br>
+
+      <b>Detection Settings</b> <br> Sensitivity: This sets how sensitive the motion capture is. Lower the sensitivity to prevent small things from 
+      triggering the motion capture, and raise it if some things are not getting detected. <br> Record Video: When set to on, Protecc will constantly record and save footage.
+      <br>Camera Resolution: The quality of video that Protecc will capture. Higher resolutions will take up more space, but be more clear. Note: 
+      Max resolution depends on the camera being used. <br>
+
+      <b>Directories</b> <br> Unknown Directory: An image taken of the most recent time an unrecognized person was detected.
+      <br> Motion Directory: An image taken of the most recent time motion was detected. <br>
+
+      <b>Images</b> <br> Unknown People: Images captured of people not in the 'Trusted People' list will be available here.
+      <br>Trusted People: Images of every person who is trusted. 
+      <br>Motion Detection Images: Images of each time motion is detected <br>      
+    </p>
   </div>
   
   <div id="contact" class="tabcontent">
     <h3>Contact</h3>
-    <p>Contact Description</p>
+    <p>Contact Description</p> 
+  </div>
+  
+  <div id="about" class="tabcontent">
+    <h3>About</h3>
+    <p>About Description</p>
+  </div>
+
+  <div id="mini" class="tabcontent">
+    <p>Tabs minimized</p>
   </div>
 
   <script>
@@ -82,7 +102,7 @@
 -->
 
 <!--Setting Menu--> 
-<h3>Detection Settings</h2>
+<h3>Detection Settings</h3>
   <div class="column sensitivity" style="background-color:#63D1F4;">
     <!--form action="/action_page.php" method="get"-->
     <form>
@@ -182,20 +202,23 @@
   <hr size="8" width="100%" float ="left" color = #E7F8FD >
   <br> 
 
-  <!--start button-->
-  <div class="start_button">
-    <button class = "start_button">START</button>
-  </div>
-  <br>
-
-  <!--stop button--->
-  <div class="stop_button">
-    <button class = "stop_button">STOP</button>
+  <!--controls-->
+  <h2>Controls</h2>
+  <div id ="controls">
+    <!--start button-->
+    <div class = "start_stop">
+      <button class = "start_button" onclick="alert('Protection On!')" >START</button>
+    </div>
+     <!--stop button--->
+     <div class = "start_stop">
+      <button class = "stop_button" onclick="alert('Protection Off!')" >STOP</button>
+     </div>
   </div>
   <br>
   
   <div>
     <b>Directories: </b>
+    <br>
     <input class = "unknown_dir" type = button onClick = "location.href = 'unknowndir.html'" value='Unknown People Directory'>
     <input class = "trust_dir" type = button onClick = "location.href = 'trustdir.html'" value='Trusted People Directory'>
     <input class = "motion_dir" type = button onClick = "location.href = 'motiondir.html'" value='Motion Detection Directory'>

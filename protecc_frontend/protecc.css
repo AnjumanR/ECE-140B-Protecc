@@ -65,17 +65,34 @@ body {
     cursor:pointer;
   }
   
-  /*Start button*/
-  .start_button{
+  /*Start and stop button*/
+  h2 {
+    text-align:center;
+  }
+
+  #controls{
+    width:100%;
     text-align: center;
+  }
+  .start_stop{
+    width:300px;
+    display: inline-block;
+  }
+
+  .start_button{
+    background-color: #008CBA;
+    font-size: 30px;
+    border-radius: 12px;
     cursor:pointer;
   }
   
-  /*Stop button*/
   .stop_button{
-    text-align: center;
+    background-color: #008CBA;
+    font-size: 30px;
+    border-radius: 12px;
     cursor:pointer;
   }
+  
   
   /*directory buttons*/
   .unknown_dir {
