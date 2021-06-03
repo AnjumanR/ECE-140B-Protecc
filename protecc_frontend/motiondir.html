@@ -5,8 +5,15 @@
   <title>motiondir</title>
   <link rel="stylesheet" type="text/css" href="motiondir.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-  </style>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+        setTimeout(function () {
+            window.location.reload();
+        }, 5000);
+    });
+  </script>
 </head>
   
   <!--body-->
@@ -15,4 +22,5 @@
     <input class = "return home" type = button onClick = "location.href = 'protecc.html'" value='Return Home'>
   </div>
   <h1>Motion Detection Directory</h1>
+  <img id="picture" src="data:image/png;base64,{{ img_data_d }}">
 </body>

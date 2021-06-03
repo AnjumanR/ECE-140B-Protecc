@@ -8,7 +8,7 @@ import os
 app = Flask(__name__, template_folder= 'protecc_frontend')
 
 dirname = os.path.dirname(__file__)
-image_path = os.path.join(dirname, 'protecc_backend/known_faces')
+image_path = os.path.join(dirname, 'protecc_backend/motion_captures')
 i_listing = os.listdir(image_path)
 
 #gets the latest image and saves it to img_data for the HTML tag to use
@@ -23,7 +23,7 @@ def start():
     im.save(data, "PNG")
     encoded_img_data = base64.b64encode(data.getvalue())
 
-    return render_template("protecc.html", img_data=encoded_img_data.decode('utf-8'))
+    return render_template("motiondir.html", img_data_t=encoded_img_data.decode('utf-8'))
 
 #Gets the path of the latest image
 def get_latest_image(dirpath, valid_extensions=('jpg','jpeg','png')):
