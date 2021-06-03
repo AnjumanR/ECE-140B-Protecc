@@ -5,13 +5,69 @@
   <title>Protecc</title>
   <link rel="stylesheet" type="text/css" href="protecc.css">
   <script type="text/javascript" src="protecc.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
+    * {
+      box-sizing: border-box;
+    }
+    .column {
+      float: left;
+      padding: 10px;
+      height: 200px;
+    }
+    .sensitivity, .cam_resolution {
+      width: 33%;
+    }
+    .record_video {
+      width: 34%;
+    }
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
   </style>
 </head>
   
   <!--body-->
 <body>
   <h1> P R O T E C C </h1>
+  <!--TABS-->
+  <div class="tab">
+    <button class="tablinks" onclick="userInfo(event, 'hardware')">Hardware Setup</button>
+    <button class="tablinks" onclick="userInfo(event, 'about')">About</button>
+    <button class="tablinks" onclick="userInfo(event, 'contact')">Contact</button>
+  </div>
+  
+  <div id="hardware" class="tabcontent">
+    <h3>Hardware Setup</h3>
+    <p>Hardware Setup Description</p>
+  </div>
+  
+  <div id="about" class="tabcontent">
+    <h3>About</h3>
+    <p>About Description</p> 
+  </div>
+  
+  <div id="contact" class="tabcontent">
+    <h3>Contact</h3>
+    <p>Contact Description</p>
+  </div>
+
+  <script>
+    function userInfo(evt, theInfo) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      document.getElementById(theInfo).style.display = "block";
+      evt.currentTarget.className += " active";
+    }
+  </script>
 
   <!--Setting Menu
   <div class="dropdown">
@@ -27,12 +83,12 @@
 
 <!--Setting Menu--> 
 <h3>Detection Settings</h2>
-  <div class="sensitivity">
+  <div class="column sensitivity" style="background-color:#63D1F4;">
     <!--form action="/action_page.php" method="get"-->
     <form>
       <label for="sensitivity">Sensitivity (between 0 and 100):</label>
       <input type="range" id="sensitivity" name="sensitivity" min="0" max="100" step = "10">
-      <input type="button" onClick="number()" value="Submit">
+      <input id = "sens_button" type="button" onClick="number()" value="Submit">
     </form>
     <script>
       function number(){
@@ -49,16 +105,15 @@
     </script>
     <p>Sensitivity Value: <span id="display_sens"></span> </p> 
   </div>
-  <br>
 
-  <div class="record_video">
+  <div class="column record_video" style="background-color:#8FDEF7;">
     <form>
       <p>Record Video:</p>
       <input type="radio" id="on" name="video" value="on">
       <label for="on">On</label><br>
       <input type="radio" id="off" name="video" value="off">
       <label for="off">Off</label><br>
-      <input type="button" onclick="record()" value="Submit">
+      <input id = "record_button" type="button" onclick="record()" value="Submit">
     </form>
     <script>
       function record(){
@@ -83,11 +138,10 @@
         document.getElementById("the_rv").innerHTML = rv;
       }
     </script>
-    <p>Record Video: <span id="the_rv"></span> </p> 
+    <p>Record Selection: <span id="the_rv"></span> </p> 
   </div>
-  <br>
 
-  <div class="cam_resolution">
+  <div class="column cam_resolution" style="background-color:#BBEBFA;">
     <form>
       <p>Camera Resolution:</p>
       <!--<input type="checkbox" id="480p" name="resolution" value="480" onclick="mark_option(this)">
@@ -103,7 +157,7 @@
       <label for="720p">720p</label><br>
       <input type="radio" id="1080p" name="resolution" value="1080">
       <label for="1080p">1080p</label><br>
-      <input type="button" onclick="cam()" value="Submit">
+      <input id = "cam_button" type="button" onclick="cam()" value="Submit">
     </form>
     <script>
       function cam(){
@@ -125,6 +179,8 @@
     <p>Selected Resolution: <span id="the_cam"></span> </p> 
   </div>
   <br>
+  <hr size="8" width="100%" float ="left" color = #E7F8FD >
+  <br> 
 
   <!--start button-->
   <div class="start_button">
@@ -138,13 +194,26 @@
   </div>
   <br>
   
+  <div>
+    <b>Directories: </b>
+    <input class = "unknown_dir" type = button onClick = "location.href = 'unknowndir.html'" value='Unknown People Directory'>
+    <input class = "trust_dir" type = button onClick = "location.href = 'trustdir.html'" value='Trusted People Directory'>
+    <input class = "motion_dir" type = button onClick = "location.href = 'motiondir.html'" value='Motion Detection Directory'>
+  </div>
+  <br>
+
   <!--Categories-->
   <div>
     <table style="width:100%">
       <tr>
-        <th>Unknown People</th>
-        <th>Trusted People</th> 
-        <th>Motion Detection Images</th>
+        <th style="width:33%">Unknown People</th>
+        <th style="width:34%">Trusted People</th> 
+        <th style="width:33%">Motion Detection Images</th>
+      </tr>
+      <tr>
+        <td>IMAGES HERE</td>
+        <td>IMAGES HERE</td> 
+        <td>IMAGES HERE</td>
       </tr>
     </table>
   </div>

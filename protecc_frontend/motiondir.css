@@ -1,0 +1,7 @@
+body {
+    background: url(blue.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;; /*need image that gives sense of protection/calm*/
+}
